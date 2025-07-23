@@ -17,11 +17,17 @@ class CreateChatbotAction
             'contents' => [
                 [
                     'parts' => [
+                        ['text' => "You are a helpful travel assistant. Your job is to help users find the best tourist attractions, hotels, flight info, travel tips, and travel plans. Only answer questions related to travel and tourism."]
+                    ]
+                ],
+                [
+                    'parts' => [
                         ['text' => $data->message]
                     ]
                 ]
             ]
         ]);
+
 
         return $response->json('candidates.0.content.parts.0.text') ?? 'No response';
     }
