@@ -25,7 +25,7 @@ class CreateLeafLetMapAction
     - name (string)
     - lat (latitude as float)
     - lng (longitude as float)
-    - description (short string)
+    - description (description 300 words as string)
     - category (e.g., lake, fort, viewpoint, valley)
     - distance_km (float, approx. distance from the region center)
 

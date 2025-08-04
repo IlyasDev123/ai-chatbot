@@ -26,6 +26,7 @@ const showingNavigationDropdown = ref(false);
         <NavLink :href="route('dashboard')" :active="route().current('dashboard')">Dashboard</NavLink>
         <NavLink :href="route('events.index')" :active="route().current('events.index')">Events</NavLink>
         <NavLink :href="route('chatbot.index')" :active="route().current('chatbot.index')">AI Agent</NavLink>
+        <NavLink :href="route('map.index')" :active="route().current('map.index')">AI MAP</NavLink>
       </nav>
     </aside>
 

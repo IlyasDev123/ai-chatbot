@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class AIController extends Controller
 {
@@ -32,5 +33,20 @@ class AIController extends Controller
         $places = json_decode($matches[0] ?? '[]', true);
 
         return response()->json($places);
+    }
+
+    public function trainData()
+    {
+        $response = Http::post('http://localhost:8100/train', [
+            'prompt' => 'What is Hunza famous for?',
+            'response' => 'Hunza is known for its stunning mountains and natural beauty.'
+        ]);
+
+        if ($response->successful()) {
+            return response()->json(['message' => 'Training data sent successfully']);
+        } else {
+            dd($response->body());
+            return response()->json(['error' => 'Failed to send training data'], 500);
+        }
     }
 }

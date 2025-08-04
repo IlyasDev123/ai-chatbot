@@ -13,7 +13,10 @@ class LeafLetMapController extends Controller
 {
     public function index()
     {
-        return Inertia::render('LeafletMap/Index');
+        return Inertia::render(
+            'LeafletMap/Index',
+            ['mapillaryToken' => env('MAPILLARY_CLIENT_TOKEN')],
+        );
     }
 
     public function getPlaces(CreateLeafLetMapRequest $request, CreateLeafLetMapAction $action)

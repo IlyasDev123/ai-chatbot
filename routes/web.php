@@ -19,12 +19,15 @@ Route::middleware('auth')->group(function () {
     Route::resource('events', \App\Http\Controllers\EventController::class);
     Route::get('/chatbot', [ChatbotController::class, 'index'])->name('chatbot.index');
     Route::post('/chatbot/message', [ChatbotController::class, 'ask'])->name('chatbot.ask');
+    Route::get('/map', [LeafLetMapController::class, 'index'])->name('map.index');
+    Route::post('/ai/map', [LeafLetMapController::class, 'getPlaces'])->name('map.getPlaces');
 });
-Route::get('/map', [LeafLetMapController::class, 'index'])->name('map.index');
-Route::post('/ai/map', [LeafLetMapController::class, 'getPlaces'])->name('map.getPlaces');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/train-data', [\App\Http\Controllers\AIController::class, 'trainData'])->name('ai.trainData');
 
 
 
